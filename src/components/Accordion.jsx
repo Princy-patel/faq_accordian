@@ -34,13 +34,14 @@ const initialData = [
 function Accordion() {
   const [isShow, setIsShow] = useState(initialData);
 
-  const handleImage = function (id) {
+  const handleToggleVisibility = function (id) {
     const openAndClose = isShow.map((data) => ({
       ...data,
       isVisible: data.id === id ? !data.isVisible : false,
     }));
     setIsShow(openAndClose);
   };
+
   return (
     <>
       <div className="flex [&>*]:p-3">
@@ -52,8 +53,11 @@ function Accordion() {
         {isShow.map((data) => {
           return (
             <Fragment key={data.id}>
-              <div className="flex justify-between">
-                <h2 className="text-[#2f1533] font-bold py-5">
+              <div
+                className="flex justify-between"
+                onClick={handleToggleVisibility.bind(null, data.id)}
+              >
+                <h2 className="text-[#2f1533] font-bold py-5 hover:text-[#ad28eb] cursor-pointer">
                   {data.question}
                 </h2>
                 <img
@@ -62,9 +66,8 @@ function Accordion() {
                       ? "/images/icon-plus.svg"
                       : "/images/icon-minus.svg"
                   }`}
-                  alt="plus-minus"
-                  // ref={reference}
-                  onClick={handleImage.bind(null, data.id)}
+                  alt="toggle"
+                  className="cursor-pointer"
                 />
               </div>
               <p

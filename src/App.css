@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: "Work Sans";
-  src: url("../public//fonts//static//WorkSans-Regular.ttf") format("truetype");
+  src: url("/fonts//static//WorkSans-Regular.ttf") format("truetype");
 }
 
 @media (prefers-reduced-motion: no-preference) {
